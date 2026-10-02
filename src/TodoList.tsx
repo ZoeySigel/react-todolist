@@ -14,7 +14,7 @@ type TodoListProps = {
 
 function TodoList({ todos, onToggle, onDelete }: TodoListProps) {
   return (
-    <ul>
+    <ul className="todo-list" aria-label="待办事项列表">
       {todos.map((todo) => (
         <TodoItem
           key={todo.id}
