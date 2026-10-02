@@ -11,17 +11,31 @@ type TodoItemProps = {
 };
 
 function TodoItem({ todo, onToggle, onDelete }: TodoItemProps) {
+  const checkboxId = `todo-check-${todo.id}`;
+
   return (
-    <li>
+    <li className={`todo${todo.completed ? " is-done" : ""}`}>
       <input
+        id={checkboxId}
+        className="todo__check"
         type="checkbox"
         checked={todo.completed}
         onChange={() => onToggle(todo.id)}
       />
 
-      <span>{todo.text}</span>
+      <label className="todo__text" htmlFor={checkboxId}>
+        {todo.text}
+      </label>
 
-      <button onClick={() => onDelete(todo.id)}>删除</button>
+      <button
+        type="button"
+        className="todo__delete"
+        onClick={() => onDelete(todo.id)}
+        aria-label={`删除待办：${todo.text}`}
+        title="删除"
+      >
+        <span aria-hidden="true">×</span>
+      </button>
     </li>
   );
 }

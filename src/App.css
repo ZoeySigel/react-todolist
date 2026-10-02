@@ -1,0 +1,456 @@
+/* ==========================================================================
+   App.css · 组件样式（新粗野主义 Neubrutalism）
+   依赖 index.css 中的设计令牌；本文件内不出现硬编码色值，便于统一换肤。
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   页面骨架
+   -------------------------------------------------------------------------- */
+.app {
+  width: 100%;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--nb-s6) var(--nb-s4) var(--nb-s7);
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nb-s5);
+}
+
+/* --------------------------------------------------------------------------
+   Hero
+   -------------------------------------------------------------------------- */
+.hero {
+  margin-bottom: var(--nb-s6);
+}
+
+.hero__eyebrow {
+  display: inline-block;
+  margin: 0 0 var(--nb-s3);
+  padding: 5px 10px;
+  font-family: var(--nb-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--nb-on-accent);
+  background: var(--nb-lime);
+  border: var(--nb-border);
+  border-radius: var(--nb-r-sm);
+  box-shadow: var(--nb-shadow-1);
+}
+
+.hero__title {
+  font-size: clamp(2.75rem, 9vw, 5rem);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+}
+
+.hero__mark {
+  display: inline-block;
+  margin-left: 0.06em;
+  padding: 0.02em 0.16em 0.08em;
+  color: var(--nb-on-accent);
+  background: var(--nb-yellow);
+  border: var(--nb-border);
+  border-radius: var(--nb-r-sm);
+  box-shadow: var(--nb-shadow-2);
+  transform: rotate(-2deg);
+}
+
+.hero__sub {
+  max-width: 46ch;
+  margin-top: var(--nb-s4);
+  font-weight: 600;
+  color: var(--nb-muted);
+}
+
+/* --------------------------------------------------------------------------
+   面板（卡片）
+   -------------------------------------------------------------------------- */
+.panel {
+  padding: var(--nb-s5);
+  background: var(--nb-surface);
+  border: var(--nb-border);
+  border-radius: var(--nb-r-lg);
+  box-shadow: var(--nb-shadow-3);
+}
+
+.panel__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--nb-s3);
+  padding-bottom: var(--nb-s3);
+  margin-bottom: var(--nb-s4);
+  border-bottom: var(--nb-border);
+}
+
+.panel__title {
+  font-size: 1.5rem;
+  letter-spacing: -0.01em;
+}
+
+/* --------------------------------------------------------------------------
+   标签 / 徽章
+   -------------------------------------------------------------------------- */
+.tag,
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  font-family: var(--nb-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--nb-on-accent);
+  border: var(--nb-border);
+  border-radius: var(--nb-r-pill);
+  box-shadow: var(--nb-shadow-1);
+  white-space: nowrap;
+}
+
+.tag--cyan {
+  background: var(--nb-cyan);
+}
+
+.badge {
+  background: var(--nb-purple);
+}
+
+.badge.is-done {
+  background: var(--nb-lime);
+}
+
+/* --------------------------------------------------------------------------
+   计数器（保留原有 Demo 功能，视觉与新主题统一）
+   -------------------------------------------------------------------------- */
+.counter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--nb-s4);
+}
+
+.counter__value {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 5.5ch;
+  min-height: 5.5rem;
+  padding: var(--nb-s2) var(--nb-s4);
+  font-family: var(--nb-mono);
+  font-size: clamp(2.25rem, 8vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--nb-text);
+  background: var(--nb-surface);
+  border: var(--nb-border);
+  border-radius: var(--nb-r);
+  box-shadow: var(--nb-shadow-2);
+}
+
+.counter__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nb-s3);
+}
+
+/* --------------------------------------------------------------------------
+   按钮：默认硬阴影，hover 抬起、active 按下（投影收拢）
+   -------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--nb-s2);
+  padding: 10px 18px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--nb-on-accent);
+  background: var(--nb-surface);
+  border: var(--nb-border);
+  border-radius: var(--nb-r);
+  box-shadow: var(--nb-shadow-2);
+  transition:
+    transform 120ms ease,
+    box-shadow 120ms ease,
+    background-color 120ms ease;
+}
+
+.btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--nb-shadow-3);
+}
+
+.btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 var(--nb-ink);
+}
+
+.btn--yellow {
+  background: var(--nb-yellow);
+}
+
+.btn--lime {
+  background: var(--nb-lime);
+}
+
+.btn--pink {
+  background: var(--nb-pink);
+}
+
+/* 中性按钮：底色随主题，文字用正文色 */
+.btn--ghost {
+  color: var(--nb-text);
+  background: var(--nb-surface);
+}
+
+/* --------------------------------------------------------------------------
+   新建待办（表单）
+   -------------------------------------------------------------------------- */
+.composer {
+  display: flex;
+  gap: var(--nb-s3);
+}
+
+.composer__input {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 12px 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--nb-text);
+  background: var(--nb-surface);
+  border: var(--nb-border);
+  border-radius: var(--nb-r);
+  box-shadow: var(--nb-shadow-1);
+  transition:
+    box-shadow 120ms ease,
+    transform 120ms ease;
+}
+
+.composer__input::placeholder {
+  font-weight: 500;
+  color: var(--nb-muted);
+}
+
+/* 聚焦时仅加强硬阴影（焦点轮廓由 index.css 的 :focus-visible 统一提供） */
+.composer__input:focus-visible {
+  transform: translate(-1px, -1px);
+  box-shadow: var(--nb-shadow-2);
+}
+
+.composer__submit {
+  flex: 0 0 auto;
+  padding-inline: 22px;
+}
+
+/* --------------------------------------------------------------------------
+   筛选器
+   -------------------------------------------------------------------------- */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nb-s2);
+  margin: var(--nb-s5) 0 var(--nb-s4);
+}
+
+.chip {
+  padding: 8px 16px;
+  font-weight: 700;
+  color: var(--nb-text);
+  background: var(--nb-surface);
+  border: var(--nb-border);
+  border-radius: var(--nb-r-pill);
+  box-shadow: var(--nb-shadow-1);
+  transition:
+    transform 120ms ease,
+    box-shadow 120ms ease,
+    background-color 120ms ease,
+    color 120ms ease;
+}
+
+.chip:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--nb-shadow-2);
+}
+
+/* 选中态：墨色填充（--nb-paper 为 --nb-ink 的反色，主题翻转时自动成立） */
+.chip.is-active {
+  color: var(--nb-paper);
+  background: var(--nb-ink);
+  transform: none;
+}
+
+.chip.is-active:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--nb-shadow-2);
+}
+
+/* --------------------------------------------------------------------------
+   待办列表
+   -------------------------------------------------------------------------- */
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nb-s3);
+}
+
+.todo {
+  display: flex;
+  align-items: center;
+  gap: var(--nb-s3);
+  padding: var(--nb-s3) var(--nb-s3) var(--nb-s3) var(--nb-s4);
+  background: var(--nb-surface);
+  border: var(--nb-border);
+  border-radius: var(--nb-r);
+  box-shadow: var(--nb-shadow-1);
+  transition:
+    transform 120ms ease,
+    box-shadow 120ms ease;
+}
+
+.todo:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--nb-shadow-2);
+}
+
+/* 自定义复选框（appearance:none + 内联 SVG 对勾，避免伪元素兼容性风险） */
+.todo__check {
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: var(--nb-surface);
+  border: var(--nb-border);
+  border-radius: var(--nb-r-sm);
+  box-shadow: var(--nb-shadow-1);
+  cursor: pointer;
+  transition:
+    background-color 120ms ease,
+    transform 120ms ease;
+}
+
+.todo__check:hover {
+  transform: translate(-1px, -1px);
+}
+
+.todo__check:checked {
+  background-color: var(--nb-lime);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2310100e' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 78% 78%;
+}
+
+.todo__text {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+
+.todo.is-done .todo__text {
+  color: var(--nb-muted);
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+}
+
+.todo__delete {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  font-size: 1.35rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--nb-on-accent);
+  background: var(--nb-red);
+  border: var(--nb-border);
+  border-radius: var(--nb-r-sm);
+  box-shadow: var(--nb-shadow-1);
+  transition:
+    transform 120ms ease,
+    box-shadow 120ms ease;
+}
+
+.todo__delete:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--nb-shadow-2);
+}
+
+.todo__delete:active {
+  transform: translate(1px, 1px);
+  box-shadow: none;
+}
+
+/* --------------------------------------------------------------------------
+   空状态
+   -------------------------------------------------------------------------- */
+.empty {
+  padding: var(--nb-s6) var(--nb-s4);
+  text-align: center;
+  font-weight: 700;
+  color: var(--nb-muted);
+  background: var(--nb-surface);
+  border: var(--nb-bw) dashed var(--nb-ink);
+  border-radius: var(--nb-r);
+}
+
+/* --------------------------------------------------------------------------
+   响应式
+   -------------------------------------------------------------------------- */
+@media (max-width: 560px) {
+  .app {
+    padding: var(--nb-s5) var(--nb-s3) var(--nb-s6);
+  }
+
+  .panel {
+    padding: var(--nb-s4);
+  }
+
+  .panel__head {
+    align-items: flex-start;
+  }
+
+  .composer {
+    flex-direction: column;
+  }
+
+  .composer__submit {
+    width: 100%;
+  }
+
+  .counter {
+    align-items: stretch;
+  }
+
+  .counter__value {
+    width: 100%;
+    min-height: 4.5rem;
+  }
+
+  .counter__actions .btn {
+    flex: 1 1 auto;
+  }
+}
+
+@media (max-width: 380px) {
+  .todo {
+    padding: var(--nb-s3);
+  }
+
+  .chip {
+    padding: 7px 12px;
+  }
+}
